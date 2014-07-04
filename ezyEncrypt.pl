@@ -45,7 +45,11 @@ sub rot13
 		for (my $j = 0; $j < 13; $j++) {
 			if ($char eq 'z') {
 				$char = 'a';
-			} else {
+			} 
+			elsif ($char == 9){
+				$char = 0;
+			} 
+			else {
 				$char++;
 			}
 		}
