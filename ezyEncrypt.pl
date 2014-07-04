@@ -26,40 +26,8 @@ sub rot13
 	# String de entrada a ser encriptada
 	my $in = Clipboard->paste;
 
-	# Remove caracteres especiais > acho que da pra melhorar
-	$in =~ s/[\s]//g;
-	$in =~ s/[!]//g;
-	$in =~ s/["]//g;
-	$in =~ s/[#]//g;
-	$in =~ s/[\$]//g;
-	$in =~ s/[%]//g;
-	$in =~ s/[&]//g;
-	$in =~ s/[']//g;
-	$in =~ s/[(]//g;
-	$in =~ s/[)]//g;
-	$in =~ s/[\*]//g;
-	$in =~ s/[+]//g;
-	$in =~ s/[,]//g;
-	$in =~ s/[-]//g;
-	$in =~ s/[.]//g;
-	$in =~ s/[\/]//g;
-	$in =~ s/[:]//g;
-	$in =~ s/[;]//g;
-	$in =~ s/[<]//g;
-	$in =~ s/[=]//g;
-	$in =~ s/[>]//g;
-	$in =~ s/[?]//g;
-	$in =~ s/[@]//g;
-	$in =~ s/[[]//g;
-	$in =~ s/[\\]//g;
-	$in =~ s/[]]//g;
-	$in =~ s/[\^]//g;
-	$in =~ s/[_]//g;
-	$in =~ s/[`]//g;
-	$in =~ s/[{]//g;
-	$in =~ s/[|]//g;
-	$in =~ s/[}]//g;
-	$in =~ s/[~]//g;
+	# Remove caracteres especiais
+	$in =~ s/[\s!"#\$%&'()\*+,-\/:;<=>?@\[\\\[\^_`{|}~]//g;
 
 	# String de saida encriptada
 	my $out;
