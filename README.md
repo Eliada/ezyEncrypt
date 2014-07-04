@@ -8,11 +8,12 @@ Encriptação usando o algoritmo de rot13.
 Encriptação do que estiver no clipboard utilizando o algoritmo rot13.
 
 Utilização:
-Copie o texto que deseja encriptar utilizando-se do atalho ctrl+c ou ctrl+x
 
-rode o script em perl: perl ezyEncrypt.pl rot13
+> Copie o texto que deseja encriptar utilizando-se do atalho ctrl+c ou ctrl+x
 
-Cole o que estiver no clipboard utilizando o atalho ctrl+v
+> rode o script em perl: perl ezyEncrypt.pl rot13
+
+> Cole o que estiver no clipboard utilizando o atalho ctrl+v
 
 
 obs.:
