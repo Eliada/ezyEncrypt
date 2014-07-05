@@ -3,15 +3,15 @@ ezyEncrypt
 
 Até o momento:
 
-Encriptação usando o algoritmo de rot13.
+Cifra usando o algoritmo de rotação
 
-Encriptação do que estiver no clipboard utilizando o algoritmo rot13.
+Cifra o que estiver no clipboard utilizando o algoritmo rotação.
 
 Utilização:
 
 > Copie o texto que deseja encriptar utilizando-se do atalho ctrl+c ou ctrl+x
 
-> rode o script em perl: perl ezyEncrypt.pl rot13
+> rode o script em perl: perl ezyEncrypt.pl rot
 
 > Cole o que estiver no clipboard utilizando o atalho ctrl+v
 
@@ -22,8 +22,6 @@ obs.:
 > remove todos os caracteres de espaço
 
 > remove todos os caracteres especiais: ! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~
-
-> dado que a encriptação é simetrica, para desencriptar basta utilizar o algoritmo de encriptação
 
 > é possível colocar a operação de encriptação como um atalho de teclado. Atalho recomendado: ctrl+alt+e
 

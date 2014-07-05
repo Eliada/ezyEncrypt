@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use File::Basename;
 use Clipboard;
 
 if ('Clipboard::Xclip' eq $Clipboard::driver) {
@@ -11,25 +12,33 @@ if ('Clipboard::Xclip' eq $Clipboard::driver) {
   };
 }
 
-
-my $numArgs = scalar @ARGV;
-
-if ($numArgs != 0) {
-	if ($ARGV[0] eq 'rot13') {
-		rot13 ();
-	}
-}
-
-
-sub rot13 
+sub rot
 {
-	# String de entrada a ser encriptada
-	my $in = Clipboard->paste;
+	# Abre o arquivo de configuração
+	my $dirname = dirname (__FILE__);
+	open (my $config_file, '<', $dirname.'/ezyConfig')
+		or die "Nao foi possivel abrir o arquivo de configuracao para o ROT";
+	
+	# Número de rotações que deve ser feita, por default esse valor é 13
+	my $num_rots;
+	# Lê o arquivo de configuração e busca pelo numero de rotações
+	while (<$config_file>) {
+		if (m/#ROT/) {
+			my $next_line = <$config_file>;
+			$num_rots = $next_line =~ s/[n][=]//r;
+		}
+		last;
+	}
+	# Fecha o arquivo de configuração
+	close ($config_file);
+	
+	# String de entrada a ser cifrada
+	my $in = Clipboard->paste();
 
 	# Remove caracteres especiais
 	$in =~ s/[\s!"#\$%&'()\*+,-\/:;<=>?@\[\\\[\^_`{|}~]//g;
 
-	# String de saida encriptada
+	# String de saida cifrada
 	my $out;
 
 	# Tamanho da string a ser encriptada
@@ -38,15 +47,16 @@ sub rot13
 	# Transforma todo o texto em caixa baixa (lowercase)
 	$in = lc ($in);
 
+	# Cifra o clipboard
 	for (my $i = 0; $i < $in_length; $i++) {
 
 		my $char = substr ($in, $i, 1);
 	
-		for (my $j = 0; $j < 13; $j++) {
+		for (my $j = 0; $j < $num_rots; $j++) {
 			if ($char eq 'z') {
 				$char = 'a';
 			} 
-			elsif ($char == 9){
+			elsif ($char eq '9'){
 				$char = 0;
 			} 
 			else {
@@ -55,5 +65,17 @@ sub rot13
 		}
 		$out = $out.$char;
 	}
+
+	# Devolve o conteúdo do clipboard devolta para o clipboard, agora cifrado
 	Clipboard->copy($out);
 }
+
+my $numArgs = scalar @ARGV;
+
+if ($numArgs != 0) {
+	if ($ARGV[0] eq 'rot') {
+		rot ();
+	}
+}
+
+
