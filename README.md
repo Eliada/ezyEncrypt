@@ -5,7 +5,7 @@ Até o momento:
 
 Cifra usando o algoritmo de rotação
 
-Cifra o que estiver no clipboard utilizando o algoritmo rotação.
+Cifra o que estiver no clipboard utilizando o algoritmo de rotação.
 
 Utilização:
 
@@ -25,3 +25,5 @@ obs.:
 
 > é possível colocar a operação de encriptação como um atalho de teclado. Atalho recomendado: ctrl+alt+e
 
+Configuração
+> Para configurar as funções de criptografia/cifra basta editar o arquivo 'ezyConfig'
