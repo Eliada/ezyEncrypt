@@ -10,6 +10,6 @@ my $numArgs = scalar @ARGV;
 
 if ($numArgs != 0) {
 	if ($ARGV[0] eq 'rot') {
-		rot ();
+		rot ($ARGV[1]);
 	}
 }

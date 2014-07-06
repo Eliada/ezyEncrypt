@@ -52,23 +52,51 @@ sub rot
 	# Transforma todo o texto em caixa baixa (lowercase)
 	$in = lc ($in);
 
+	# Se o processo é de cifrar(e), ou se o processo é de decifrar(d)
+	my $process = $_[0];
+
+	# Define o valor da variáveis dependendo do processo
+	my $minus_or_plus_one;
+	my $aorz;
+	my $_aorz;
+	my $zeroornine;
+	my $_zeroornine;
+
+	if ($process eq 'e') {
+		$minus_or_plus_one = +1;
+		$aorz = 122;
+		$_aorz = 97;
+		$zeroornine = 9;
+		$_zeroornine = 0;
+	}
+	elsif ($process eq 'd') {
+		$minus_or_plus_one = -1;
+		$aorz = 97;
+		$_aorz = 122;
+		$zeroornine = 0;
+		$_zeroornine = 9;
+	}
+	
 	# Cifra o clipboard
 	for (my $i = 0; $i < $in_length; $i++) {
 
 		my $char = substr ($in, $i, 1);
-	
+		my $chari = ord ($char);
+
 		for (my $j = 0; $j < $num_rots; $j++) {
-			if ($char eq 'z') {
-				$char = 'a';
+			if ($chari == $aorz) {
+				$chari = $_aorz;
 			} 
-			elsif ($char eq '9'){
-				$char = 0;
+			elsif ($chari == $zeroornine){
+				$chari = $_zeroornine;
 			} 
 			else {
-				$char++;
+				$chari += $minus_or_plus_one;
 			}
 		}
-		$out = $out.$char;
+
+		$char = chr ($chari);
+		$out .= $char;
 	}
 
 	# Devolve o conteúdo do clipboard devolta para o clipboard, agora cifrado
