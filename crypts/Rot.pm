@@ -43,6 +43,38 @@ sub rot
 	# Remove caracteres especiais
 	$in =~ s/[\s!"#\$%&'()\*+,-\/:;<=>?@\[\\\[\^_`{|}~]//g;
 
+	$in =~ s/[\xc3][\xa0]/a/g; #à
+	$in =~ s/[\xc3][\xa1]/a/g; #á
+	$in =~ s/[\xc3][\xa2]/a/g; #â
+	$in =~ s/[\xc3][\xa3]/a/g; #ã
+	$in =~ s/[\xc3][\xa4]/a/g; #ä
+	$in =~ s/[\xc3][\xa5]/a/g; #ºa
+
+	$in =~ s/[\xc3][\xa6]//g; #ae
+
+	$in =~ s/[\xc3][\xa7]/c/g; #ç
+
+	$in =~ s/[\xc3][\xa8]/e/g; #è
+	$in =~ s/[\xc3][\xa9]/e/g; #é
+	$in =~ s/[\xc3][\xaa]/e/g; #ê
+	$in =~ s/[\xc3][\xab]/e/g; #ë
+
+	$in =~ s/[\xc3][\xac]/i/g; #ì
+	$in =~ s/[\xc3][\xad]/i/g; #í
+	$in =~ s/[\xc3][\xae]/i/g; #î
+	$in =~ s/[\xc3][\xaf]/i/g; #ï
+
+	$in =~ s/[\xc3][\xb2]/o/g; #ò
+	$in =~ s/[\xc3][\xb3]/o/g; #ó
+	$in =~ s/[\xc3][\xb4]/o/g; #ô
+	$in =~ s/[\xc3][\xb5]/o/g; #õ
+	$in =~ s/[\xc3][\xb6]/o/g; #ö
+
+	$in =~ s/[\xc3][\xb9]/u/g; #ú
+	$in =~ s/[\xc3][\xba]/u/g; #ù
+	$in =~ s/[\xc3][\xbb]/u/g; #û
+	$in =~ s/[\xc3][\xbc]/u/g; #ü
+
 	# String de saida cifrada
 	my $out;
 
