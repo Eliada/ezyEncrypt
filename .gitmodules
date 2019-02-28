@@ -1,0 +1,3 @@
+[submodule "Huffman-ep"]
+	path = Huffman-ep
+	url = git@github.com:Eliada/Huffman-ep.git
